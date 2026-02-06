@@ -1,0 +1,25 @@
+﻿@page
+@model RunTrackerApp.Pages.EditModel
+@{
+}
+<h2 class="header">Edit run record</h2>
+<p>Edit @Model.RouteIdRecord[0].Distance km run on @Model.RouteIdRecord[0].Date ?</p>
+
+<form method="post">
+<div>
+    <label>Date:</label>
+    <input type="date", asp-for="RunDate" />
+</div>
+<div>
+    <label>Length (km):</label>
+    <input type="number", asp-for="Length", step=".1", min="0.1" />
+</div>
+@{ if (!@Model.ValidModelEntry) {
+        <p class="invalid_input">Invalid input</p>
+    }
+}
+<div>
+    <button type="submit" class="icon-btn send material-icons">send</button>
+    <a class="link_icon no", id="new_record" asp-page="/Index"><i class="material-icons">close</a>
+</div>
+</form>

@@ -1,0 +1,39 @@
+﻿@page
+@model IndexModel
+@using Microsoft.Data.Sqlite;
+@{
+    ViewData["Title"] = "Home page";
+    
+    var records = @Model.GetAllRecords();
+
+}
+
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to the Run Tracker Tool <i class="material-icons">directions_run</i></h1>
+</div>
+<form method="post">
+<a asp-page="./Add", type="submit", class="link_icon confirm", id="new_record"><i class="material-icons">assignment_add</i></a>
+</form>
+
+<div class="text-center">
+<table class="records" class="text center">
+    <tr>
+        <th>Date</th>
+        <th>Distance (km)</th>
+        <th></th>
+        <th></th>
+    </tr>
+    @foreach (var row in records)
+    {
+        <tr>
+            <td>@row.Date</td>
+            <td>@row.Distance</td>
+            <td><form method="post"> <a asp-page="./Edit" asp-route-id="@row.Id"><i class="material-icons edit">edit</i></a></form></td>
+            <td><form method="post"> <a asp-page="./Delete" asp-route-id="@row.Id"><i class="material-icons no">delete</i></a></form></td>
+            
+        </tr>
+    }
+
+</table>
+</div>

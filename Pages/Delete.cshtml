@@ -1,0 +1,14 @@
+﻿@page
+@model RunTrackerApp.Pages.DeleteModel
+@{
+  
+}
+<h2 class="header">Delete run record</h2>
+<p>Delete @Model.RouteIdRecord[0].Distance km run on @Model.RouteIdRecord[0].Date ?</p>
+
+<form method="post" id="deletion_form">
+    
+    <button type="submit" class="icon-btn confirm material-icons">check</button>
+    
+    <a type="submit", class="link_icon no", id="new_record" asp-page="/Index"><i class="material-icons">close</a>
+</form>

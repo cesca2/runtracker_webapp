@@ -1,0 +1,25 @@
+﻿@page
+@model RunTrackerApp.Pages.AddModel
+@{
+
+    
+}
+
+<h2 class="header">Add new run record</h2>
+<form method="post">
+<div>
+    <label>Date:</label>
+    <input type="date", asp-for="RunDate" />
+</div>
+<div>
+    <label>Length (km):</label>
+    <input type="number", asp-for="Length", step=".1", min="0.1" />
+</div>
+@{ if (!@Model.ValidModelEntry) {
+        <p class="invalid_input">Invalid input</p>
+    }
+}
+<div>
+    <button type="submit" class="icon-btn send material-icons">send</button>
+</div>
+</form>
